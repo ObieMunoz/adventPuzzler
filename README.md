@@ -17,6 +17,10 @@ const adventPuzzler = require("./adventPuzzler")
 
 3. Upon load, the Module will walk you through the process of obtaining your session cookie and will create the file for you if it does not exist.
 
+### FILE: adventPuzzler_get_data.js
+
+This JavaScript example application will prompt the user for a year and a puzzle day, then obtain that specific puzzle data input from the AoC website and save it to the local directory.
+
 ### Function Definitions:
 
 <strong>convertInputToArray(input)</strong>

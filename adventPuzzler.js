@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const config = "./adventPuzzler.config";
 const prompt = require("prompt-sync")({ sigint: true });
-const configLoaded = false;
+let configLoaded = false;
 
 if (fs.existsSync(config)) {
   console.log("Config file found...");

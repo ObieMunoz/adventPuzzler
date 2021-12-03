@@ -36,7 +36,7 @@ const adventPuzzler = require("./adventPuzzler")
 /**
  * Attempts to return the puzzle input for the day specified from a file in the current directory. Files follow the naming convention "day1.txt, day2.txt, etc."
  * If the file does not exist, fetch data from AoC website using built-in functions.
- * If fetch is required, module requires variable: cookie which stores your Advent of Code session cookie.
+ * If fetch is required, module requires adventPuzzler.config which stores your Advent of Code session cookie.
  * AoC cookies last approximately 30 days.
  * @param {number} year An integer representing the year of the Advent of Code puzzle.
  * @param {number} day An integer representing the day of the Advent of Code puzzle.

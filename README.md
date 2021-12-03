@@ -5,6 +5,10 @@
 1. Place adventPuzzler.js and package.json in the same folder.
 2. Run 'npm install'.
 
+Care was taken to prevent this module from intentionally making multiple fetch requests to the Advent of Code website. The module will first look to see if a data file for the specific day requested is already in the local directory before making any fetch requests.
+
+<em><strong>Please do not attempt to circumvent this procedure.</strong></em>
+
 ## USAGE:
 
 1. Load in your project with :

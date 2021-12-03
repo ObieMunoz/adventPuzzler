@@ -65,6 +65,7 @@ function getAndSavePuzzleInputToFile(year = 2021, day) {
  * If the file does not exist, fetch data from AoC website using built-in functions.
  * If fetch is required, module requires variable: cookie which stores your Advent of Code session cookie.
  * AoC cookies last approximately 30 days.
+ * @param {number} year An integer representing the year of the Advent of Code puzzle.
  * @param {number} day An integer representing the day of the Advent of Code puzzle.
  * @returns A string representing the input for the puzzle.
  */

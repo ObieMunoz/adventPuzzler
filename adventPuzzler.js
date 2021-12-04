@@ -47,17 +47,28 @@ function init_config() {
   }
 }
 
-function getAndSavePuzzleInputToFile(year = 2021, day) {
+// function getAndSavePuzzleInputToFile(year = 2021, day) {
+//   if (!config) return console.error("ERROR: CONFIGURATION FILE REQUIRED.");
+//   fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
+//     headers: { Cookie: `session=${cookie}` },
+//   })
+//     .then((res) => res.text())
+//     .then((text) => {
+//       fs.writeFileSync(`./${year}-day-${day}-puzzle-input.txt`, text);
+//       console.log("INPUT RETURNED FROM A FETCH REQUEST");
+//       return text;
+//     });
+// }
+
+async function getAndSavePuzzleInputToFileAsync(year = 2021, day) {
   if (!config) return console.error("ERROR: CONFIGURATION FILE REQUIRED.");
-  fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
+  const res = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
     headers: { Cookie: `session=${cookie}` },
-  })
-    .then((res) => res.text())
-    .then((text) => {
-      fs.writeFileSync(`./${year}-day-${day}-puzzle-input.txt`, text);
-      console.log("INPUT RETURNED FROM A FETCH REQUEST");
-      return text;
-    });
+  });
+  const text = await res.text();
+  fs.writeFileSync(`./${year}-day-${day}-puzzle-input.txt`, text);
+  console.log("INPUT RETURNED FROM A FETCH REQUEST");
+  return text;
 }
 
 /**
@@ -69,14 +80,14 @@ function getAndSavePuzzleInputToFile(year = 2021, day) {
  * @param {number} day An integer representing the day of the Advent of Code puzzle.
  * @returns A string representing the input for the puzzle.
  */
-function getPuzzleInput(year = 2021, day) {
+async function getPuzzleInput(year = 2021, day) {
   const file = `./${year}-day-${day}-puzzle-input.txt`;
   if (fs.existsSync(file)) {
     text = fs.readFileSync(file, "utf8");
     console.log("INPUT RETURNED FROM SAVED FILE");
     return text;
   } else {
-    return getAndSavePuzzleInputToFile(year, day);
+    return getAndSavePuzzleInputToFileAsync(year, day);
   }
 }
 

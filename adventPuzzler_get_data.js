@@ -1,11 +1,8 @@
 const prompt = require("prompt-sync")({ sigint: true });
 const adventPuzzler = require("./adventPuzzler");
-
 const DATE = new Date();
 const [DAY, YEAR] = getDateInfo();
-const H = 24 - DATE.getHours();
-const M = 60 - DATE.getMinutes();
-const S = 60 - DATE.getSeconds();
+const timeRemaining = adventPuzzler.nextPuzzleTimeRemaining();
 
 function getDateInfo() {
   const DAY = DATE.getDate();
@@ -17,7 +14,7 @@ function getDateInfo() {
   }
 }
 
-console.log(`${H}:${M}:${S} until next puzzle unlock.`);
+console.log(`${timeRemaining} until next puzzle unlock.`);
 
 const year = prompt(`Enter Year (Default if Blank: ${YEAR}): `, YEAR);
 const day = prompt(`Enter Day (Default if Blank: ${DAY}): `, DAY);

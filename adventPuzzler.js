@@ -3,8 +3,7 @@ const fs = require("fs");
 const config = "./adventPuzzler.config";
 const prompt = require("prompt-sync")({ sigint: true });
 const DATE = new Date();
-const YEAR = DATE.getFullYear();
-const DAY = DATE.getDate();
+const [DAY, YEAR] = getDateInfo();
 let configLoaded = false;
 
 if (fs.existsSync(config)) {
@@ -51,8 +50,10 @@ function init_config() {
 
 async function getAndSavePuzzleInputToFileAsync(year = 2021, day) {
   if (!config) return console.error("ERROR: CONFIGURATION FILE REQUIRED.");
-  if (day > DAY || year > YEAR)
-    return console.error("ERROR: DO NOT ATTEMPT TO FETCH UNRELEASED PUZZLES.");
+  if (day > DAY || year > YEAR) {
+    console.error("ERROR: DO NOT ATTEMPT TO FETCH UNRELEASED PUZZLES.");
+    return "";
+  }
   const res = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
     headers: { Cookie: `session=${cookie}` },
   });
@@ -102,4 +103,26 @@ function convertInputToArray(input) {
   return arrayOfArrays;
 }
 
-module.exports = { getPuzzleInput, convertInputToArray };
+function getDateInfo() {
+  const DAY = DATE.getDate();
+  const YEAR = DATE.getFullYear();
+  if (DAY >= 1 && DAY <= 24) {
+    return [DAY, YEAR];
+  } else {
+    return [1, YEAR];
+  }
+}
+
+function nextPuzzleTimeRemaining() {
+  const date = new Date();
+  const h = 24 - DATE.getHours();
+  const m = 60 - DATE.getMinutes();
+  const s = 60 - DATE.getSeconds();
+  return `${h}:${m}:${s}`;
+}
+
+module.exports = {
+  getPuzzleInput,
+  convertInputToArray,
+  nextPuzzleTimeRemaining,
+};

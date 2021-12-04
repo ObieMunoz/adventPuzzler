@@ -17,8 +17,7 @@ if (fs.existsSync(config)) {
 }
 
 /**
- * Explains how to obtain a cookie identified for the Advent of Code website and prompts the user to save this data in a new adventPuzzler.config file.
- * AoC session cookies last approximately one month.
+ * Explains how to obtain a cookie identified for the Advent of Code website and prompts the user to save this data in a new adventPuzzler.config file. AoC session cookies last approximately one month.
  */
 function init_config() {
   const setConfiguration = prompt(
@@ -91,8 +90,7 @@ async function getPuzzleInput(year = 2021, day) {
 /**
  * Converts a string input into an array.
  * @param input A string representing the input for the puzzle.
- * @returns An array representing the input for the puzzle. If multiple values are found one each line,
- * they will be placed in nested arrays.
+ * @returns An array representing the input for the puzzle. If multiple values are found one each line, they will be placed in nested arrays.
  */
 function convertInputToArray(input) {
   const array = input.split("\n");
@@ -113,6 +111,9 @@ function getDateInfo() {
   }
 }
 
+/**
+ * @returns A string representing the time remaining until the next puzzle is released.
+ */
 function nextPuzzleTimeRemaining() {
   const date = new Date();
   const h = 24 - DATE.getHours();

@@ -22,8 +22,7 @@ const adventPuzzler = require("./adventPuzzler")
 3. Upon load, the Module will walk you through the process of obtaining your session cookie and will create the file for you if it does not exist.
 
 - Example Use:
-![async function usage](https://user-images.githubusercontent.com/5696449/144693541-6652cb44-70eb-4184-abe5-4835f135e9e9.png)
-
+  ![async function usage](https://user-images.githubusercontent.com/5696449/144693541-6652cb44-70eb-4184-abe5-4835f135e9e9.png)
 
 ### FILE: adventPuzzler_get_data.js
 
@@ -54,6 +53,14 @@ This JavaScript example application will prompt the user for a year and a puzzle
  * @param {number} day An integer representing the day of the Advent of Code puzzle.
  * @returns A string representing the input for the puzzle.
  */
+```
+
+<strong>nextPuzzleTimeRemaining</strong>
+
+```
+/**
+* @returns - A string representing the time remaining until the next puzzle is released.
+*/
 ```
 
 ### Function: convertInputToArray(input)

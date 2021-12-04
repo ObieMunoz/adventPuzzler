@@ -47,19 +47,6 @@ function init_config() {
   }
 }
 
-// function getAndSavePuzzleInputToFile(year = 2021, day) {
-//   if (!config) return console.error("ERROR: CONFIGURATION FILE REQUIRED.");
-//   fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
-//     headers: { Cookie: `session=${cookie}` },
-//   })
-//     .then((res) => res.text())
-//     .then((text) => {
-//       fs.writeFileSync(`./${year}-day-${day}-puzzle-input.txt`, text);
-//       console.log("INPUT RETURNED FROM A FETCH REQUEST");
-//       return text;
-//     });
-// }
-
 async function getAndSavePuzzleInputToFileAsync(year = 2021, day) {
   if (!config) return console.error("ERROR: CONFIGURATION FILE REQUIRED.");
   const res = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {

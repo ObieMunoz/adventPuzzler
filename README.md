@@ -31,6 +31,7 @@ This JavaScript example application will prompt the user for a year and a puzzle
 ### Function Definitions:
 
 <strong>convertInputToArray(input)</strong>
+<em>NOTE: Certain dates, such as 2021-04, have puzzle inputs that will not properly convert!</em>
 
 ```
 /**

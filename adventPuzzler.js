@@ -2,13 +2,15 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const config = "./adventPuzzler.config";
 const prompt = require("prompt-sync")({ sigint: true });
+const DATE = new Date();
+const YEAR = DATE.getFullYear();
+const DAY = DATE.getDate();
 let configLoaded = false;
 
 if (fs.existsSync(config)) {
   console.log("Config file found...");
   configLoaded = true;
   cookie = fs.readFileSync(config, "utf8");
-  console.log(cookie);
 } else {
   console.error("No configuration file!");
   console.error("Fetching from Advent of Code disabled.");
@@ -49,6 +51,8 @@ function init_config() {
 
 async function getAndSavePuzzleInputToFileAsync(year = 2021, day) {
   if (!config) return console.error("ERROR: CONFIGURATION FILE REQUIRED.");
+  if (day > DAY || year > YEAR)
+    return console.error("ERROR: DO NOT ATTEMPT TO FETCH UNRELEASED PUZZLES.");
   const res = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
     headers: { Cookie: `session=${cookie}` },
   });

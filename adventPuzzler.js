@@ -65,9 +65,14 @@ async function getAndSavePuzzleInputToFileAsync(year = 2021, day) {
   const res = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
     headers: { Cookie: `session=${cookie}` },
   });
-  const text = await res.text();
-  fs.writeFileSync(`./${year}-day-${day}-puzzle-input.txt`, text);
-  console.log("INPUT RETURNED FROM A FETCH REQUEST");
+  const text = await res.text().then((text) => {
+    if (text.startsWith("Please don't")) {
+      console.error("ERROR: YOU MUST WAIT UNTIL THIS DAY IS RELEASED BY AOC.");
+    } else {
+      fs.writeFileSync(`./${year}-day-${day}-puzzle-input.txt`, text);
+      console.log("INPUT RETURNED FROM A FETCH REQUEST");
+    }
+  });
   return text;
 }
 

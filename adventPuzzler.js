@@ -49,7 +49,7 @@ function init_config() {
 
 async function getAndSavePuzzleInputToFileAsync(year = 2021, day) {
   if (!config) return console.error("ERROR: CONFIGURATION FILE REQUIRED.");
-  if (day > DAY || year > YEAR) {
+  if (day > DAY && year >= YEAR) {
     console.error("ERROR: DO NOT ATTEMPT TO FETCH UNRELEASED PUZZLES.");
     return "";
   }
